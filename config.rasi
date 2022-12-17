@@ -1,0 +1,20 @@
+/* Rofi config file */
+configuration {
+   font: "Source Sans Pro 12";
+    show-icons: true;
+    display-window: "Window";
+   display-drun: "Search";
+}
+
+@theme "oxide"
+//@theme "colors-rofi-dark"
+listview {
+    lines: 12;
+}
+
+
+/* Dark theme. */
+@import "~/.cache/wal/colors-rofi-dark"
+
+/* Light theme. */
+//@import "~/.cache/wal/colors-rofi-light"
