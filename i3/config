@@ -185,11 +185,15 @@ bindsym $mod+r mode "resize"
 ############################################
 exec_always --no-startup-id xrandr --output Virtual-1 --mode 1920x1080
 exec_always --no-startup-id xrdb .Xresources
-#exec_always --no-startup-id feh --bg-scale /home/arya/Downloads/wallpaper-red.png
+#exec_always --no-startup-id feh --bg-scale /home/arya/Downloads/wallpap
 #exec --no-startup-id killall -q polybar
+exec --no-startup-id vibrantLinux
+exec --no-startup-id cfw
 exec --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id wal -i Downloads/v8qic1t6yza81.webp
-#exec_always --no-startup-id picom -b
+exec_always --no-startup-id wal -i Downloads/atanas-teodosiev-EzoGykQmUYI-unsplash.jpg
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec_always --no-startup-id picom -b
 #exec_always --no-startup-id i3bar
 ########################################
 default_border pixel
@@ -225,7 +229,7 @@ bindsym $mod+x exec --no-startup-id firefox
 # This effectively disables the window title bars alltogether (enabling gaps/gapping)
 #new_window 1pixel
 
-gaps inner 15
+gaps inner 8
 gaps outer -5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
