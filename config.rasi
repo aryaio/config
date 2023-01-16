@@ -63,16 +63,6 @@ listview {
 	border: 0 10 6 10;
 }
 
-// INPUT BAR 
-//------------------------------------------------
-
-entry {
-	text-color: #EFE7DD;
-	padding: 10 10 0 0;
-	margin: 0 -2 0 0;
-}
-
-
 
 
 
