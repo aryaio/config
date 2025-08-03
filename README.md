@@ -1,7 +1,6 @@
 <img width="1920" height="1080" alt="IMG_2101" src="https://github.com/user-attachments/assets/d78b2398-504a-419e-a878-87bcc635e260" />
 
 
-
 This is my personal configuration for the **i3 Window Manager**, tailored for a clean, minimal, and productive desktop experience. The setup combines key lightweight Linux tools to create a fully featured tiling window environment, including:
 
 - 🔔 [Dunst](https://github.com/dunst-project/dunst) – for notifications
