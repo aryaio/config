@@ -22,18 +22,6 @@ All configuration files are modular and easy to modify, making this setup ideal 
 └── picom/        # Picom compositor config
 </pre>
 
-## 🚀 Features
-
-- 🧩 **Modular configuration** – All components are separated for easier customization
-- 💨 **Compositor with Picom** – Smooth fading, window transparency, and shadow effects
-- 🔍 **Rofi launcher** – Fast app and window switching with custom themes
-- 🔔 **Dunst notifications** – Minimal, styled notification popups with urgency hints
-- 📊 **Polybar integration** – Dynamic bar showing workspaces, media, system stats, and more
-- 🎯 **Custom keybindings** – Efficient navigation, window control, media, and brightness shortcuts
-- 🌄 **Wallpaper support** – Uses `feh` for setting static wallpapers
-- 🌓 **Light/Dark mode friendly** – Easily theme your tools consistently
-- 🖥️ **Multi-monitor support** – Works with `xrandr` or `autorandr`
-
 ## 🛠️ Requirements
 
 Before using this setup, ensure you have the following software installed:
