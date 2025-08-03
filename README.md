@@ -19,7 +19,6 @@ All configuration files are modular and easy to modify, making this setup ideal 
 ├── dunst/        # Dunst notification styles and settings
 ├── rofi/         # Rofi themes and launchers
 ├── polybar/      # Polybar configuration and scripts
-└── picom/        # Picom compositor config
 </pre>
 
 ## 🛠️ Requirements
