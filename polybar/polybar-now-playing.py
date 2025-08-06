@@ -16,7 +16,7 @@ font_index = 1
 update_delay = 0.3
 
 # (list) : list of chars containing previous, play, pause, next glyphs for media controls in respective order
-control_chars = ['','','','']
+control_chars = ['󰼨','󰐊','','󰼧']
 
 # (dict) : dict of char icons to display as prefix.
 # If player name is available as key, then use the corressponding icon,
@@ -33,7 +33,7 @@ display_player_prefix = {
 metadata_fields = ["xesam:title", "xesam:artist"]
 
 # (char) : separator for metadata fields
-metadata_separator = "-"
+metadata_separator = "|"
 
 # (bool) : Hide text when no player is available? True disables the output for no players.
 hide_output = False
