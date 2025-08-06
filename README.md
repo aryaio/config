@@ -2,14 +2,12 @@
 
 ___
 
-This is my personal configuration for the **i3 Window Manager**, tailored for a clean, minimal, and productive desktop experience. The setup combines key lightweight Linux tools to create a fully featured tiling window environment, including:
+This is my personal configuration for the **i3 Window Manager**, The setup combines key lightweight Linux tools to create a fully featured tiling window environment, including:
 
 - 🔔 [Dunst](https://github.com/dunst-project/dunst) – for notifications
 - 🔍 [Rofi](https://github.com/davatorium/rofi) – for launching applications and switching windows
 - 📊 [Polybar](https://github.com/polybar/polybar) – for a modular status bar
 - 💨 [Picom](https://github.com/yshui/picom) – for transparency, shadows, and fading effects
-
-All configuration files are modular and easy to modify, making this setup ideal for power users and minimalists alike.
 
 
 📁 Directory Structure
