@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -81,6 +81,12 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -183,14 +189,14 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 
 ############################################
-exec_always --no-startup-id xrandr --output Virtual-1 --mode 1920x1080
+exec_always --no-startup-id xrandr --output eDP --mode 2560x1440 --scale 0.7x0.7
 exec_always --no-startup-id xrdb .Xresources
 #exec_always --no-startup-id feh --bg-scale /home/arya/Downloads/wallpap
 #exec --no-startup-id killall -q polybar
 exec --no-startup-id vibrantLinux
 exec --no-startup-id cfw
-exec --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id wal -i Downloads/atanas-teodosiev-EzoGykQmUYI-unsplash.jpg
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec_always --no-startup-id picom -b
