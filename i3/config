@@ -191,23 +191,18 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-############################################
+################################################################################
 exec_always --no-startup-id xrandr --output eDP --mode 2560x1440 --scale 0.7x0.7
 exec_always --no-startup-id xrdb .Xresources
-#exec_always --no-startup-id feh --bg-scale /home/arya/Downloads/wallpap
-#exec --no-startup-id killall -q polybar
-exec --no-startup-id vibrantLinux
-exec --no-startup-id cfw
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/autorun.sh
 exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
-exec_always --no-startup-id picom -b
-#exec_always --no-startup-id i3bar
-########################################
+#exec_always --no-startup-id picom -b
+################################################################################
 default_border pixel
 #for_window[class="urxvt"]border pixel 1
-###########################################
+################################################################################
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
 # from the generated scheme.
@@ -229,10 +224,7 @@ client.background       $bg
 #bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"	
 ##############################################
 bindsym $mod+x exec --no-startup-id firefox
-#bindsym $mod+- exec --no-startup-id killall polybar
-
-
-############################
+##############################################
 ### GAPPING CONFIGURATION ###
 #############################
 # This effectively disables the window title bars alltogether (enabling gaps/gapping)
@@ -241,23 +233,4 @@ bindsym $mod+x exec --no-startup-id firefox
 gaps inner 8
 gaps outer -5
 
-# Smart gaps (gaps used if only more than one container on the workspace)
-#smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace)
- 
-# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen i
-#s 0)
-#smart_borders on
-
-#bar {
-#	status_command i3status
-#	separator_symbol " | "
-#	position top
-#	font FiraCoda Nerd Font:size=10
-#colors {
-#       background #0f1f2a
-#       statusline #00FFFF
-#	separator #00FFFF
-#	}
-#}
