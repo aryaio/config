@@ -39,6 +39,12 @@ bindsym $mod+Shift+Right move right
 
 bindsym XF86MonBrightnessDown exec light -U 10 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
 bindsym XF86MonBrightnessUp exec light -A 10 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
+bindcode 237 exec --no-startup-id bash -c "asusctl -k med && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to MEDIUM'"
+bindcode 238 exec --no-startup-id bash -c "asusctl -k high && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to HIGH'"
+bindcode 210 exec --no-startup-id bash -c "asusctl aura -n && notify-send -u normal -t 2000 'Aura Lighting' 'Switched to next mode'"
+
+
+
 
 bindsym $mod+h split h
 bindsym $mod+v split v
