@@ -32,6 +32,7 @@ polybar duplicate 2>&1 | tee -a /tmp/polybar2.log & disown
 echo "Bars launched..."
 #!/usr/bin/env bash
 ```
+Note: Replace main and duplicate with the actual names of your Polybar bars as defined in your config.
 
 ---
 
