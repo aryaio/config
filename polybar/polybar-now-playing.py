@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 import dbus
 import signal
@@ -17,26 +16,24 @@ font_index = 1
 update_delay = 0.3
 
 # (list) : list of chars containing previous, play, pause, next glyphs for media controls in respective order
-control_chars = ['PREV ','','',' NEXT']
+control_chars = ['󰼨','󰐊','','󰼧']
 
 # (dict) : dict of char icons to display as prefix.
 # If player name is available as key, then use the corressponding icon,
 # else default key value.
 # example:
-#display_player_prefix = {
-#    "spotify":  '',
-#    "firefox":  '',
-#    "telegram-desktop": '切',
-#    "telegram": '切',
-#    "default":  ''
-#}
+display_player_prefix = {
+    "spotify":  '',
+    "firefox":  '',
+    "default":  ''
+}
 
 # (list) : list of metadata fields based on mpris sepecification.
 # For more details/ field names, refer [mpris sepecification](https://www.freedesktop.org/wiki/Specifications/mpris-spec/metadata/)
 metadata_fields = ["xesam:title", "xesam:artist"]
 
 # (char) : separator for metadata fields
-metadata_separator = "-"
+metadata_separator = "|"
 
 # (bool) : Hide text when no player is available? True disables the output for no players.
 hide_output = False
@@ -87,10 +84,10 @@ def update_prefix_suffix(player_name="", status=""):
     if player_name != "":
         player_option = "-p " + player_name
 
-    prev_button = "%%{A:playerctl %s previous :}%s%%{A}"    %(player_option,control_chars[0])
+    prev_button = "%%{A:playerctl %s previous :}%c%%{A}"    %(player_option,control_chars[0])
     play_button = "%%{A:playerctl %s play :}%c%%{A}"        %(player_option,control_chars[1])
     pause_button = "%%{A:playerctl %s pause :}%c%%{A}"      %(player_option,control_chars[2])
-    next_button = "%%{A:playerctl %s next :}%s%%{A}"        %(player_option,control_chars[3])
+    next_button = "%%{A:playerctl %s next :}%c%%{A}"        %(player_option,control_chars[3])
 
     suffix = "| " + prev_button
     if status == "Playing":
@@ -103,12 +100,12 @@ def update_prefix_suffix(player_name="", status=""):
     # print(suffix)
     display_suffix = suffix
 
-#    for key in display_player_prefix.keys():
-#        if key in player_name:
-#            display_prefix = display_player_prefix[key]
-#            break
-#    else:
-#        display_prefix = display_player_prefix["default"]
+    for key in display_player_prefix.keys():
+        if key in player_name:
+            display_prefix = display_player_prefix[key]
+            break
+    else:
+        display_prefix = display_player_prefix["default"]
 
 def update_players():
     global player_names, players, session_bus, current_player, last_player_name
@@ -218,3 +215,4 @@ def main():
 if __name__ == '__main__':
     signal.signal(signal.SIGUSR1, handle_event)
     main()
+
