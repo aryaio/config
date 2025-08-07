@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/arya/.config/polybar/launch.sh
+Hidden=false
+X-MATE-Autostart-enabled=true
+Name=Polybar
+EOF
