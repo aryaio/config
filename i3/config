@@ -117,6 +117,7 @@ exec_always --no-startup-id $HOME/.config/polybar/autorun.sh
 exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
+exec --no-startup-id libinput-gestures-setup start
 
 default_border pixel
 
