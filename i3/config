@@ -6,9 +6,16 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
+#RaiseVol
+bindsym XF86AudioRaiseVolume exec --no-startup-id bash -c 'pactl set-sink-volume @DEFAULT_SINK@ +1% && volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP "\\d+%" | head -1) && dunstify -r 91190 -t 1000 -i audio-volume-high "Volume: $volume"'
+
+#LowerVol
+bindsym XF86AudioLowerVolume exec --no-startup-id bash -c 'pactl set-sink-volume @DEFAULT_SINK@ -1% && volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP "\\d+%" | head -1) && dunstify -r 91190 -t 1000 -i audio-volume-low "Volume: $volume"'
+
+#MuteVol
+bindsym XF86AudioMute exec --no-startup-id ~/.config/scripts/mute-toggle.sh
+
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 floating_modifier $mod
