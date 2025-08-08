@@ -15,7 +15,7 @@ floating_modifier $mod
 
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id rofi -show drun -dpi 120
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -108,7 +108,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id xrandr --output eDP --mode 2560x1440 --scale 0.7x0.7
+exec_always --no-startup-id xrandr --output eDP --mode 2560x1440
 exec_always --no-startup-id xrdb .Xresources
 exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
 exec_always --no-startup-id sh -c "sleep 2 && ~/.config/polybar/launch.sh"
