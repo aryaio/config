@@ -8,7 +8,7 @@ exec --no-startup-id nm-applet
 set $refresh_i3status killall -SIGUSR1 i3status
 
 #RaiseVol
-bindsym XF86AudioRaiseVolume exec --no-startup-id bash -c 'pactl set-sink-volume @DEFAULT_SINK@ +1% && volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP "\\d+%" | head -1) && dunstify -r 91190 -t 1000 -i audio-volume-high "Volume: $volume"'
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/scripts/volume-up.sh
 
 #LowerVol
 bindsym XF86AudioLowerVolume exec --no-startup-id bash -c 'pactl set-sink-volume @DEFAULT_SINK@ -1% && volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP "\\d+%" | head -1) && dunstify -r 91190 -t 1000 -i audio-volume-low "Volume: $volume"'
