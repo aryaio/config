@@ -43,9 +43,6 @@ bindcode 237 exec --no-startup-id bash -c "asusctl -k med && notify-send -u norm
 bindcode 238 exec --no-startup-id bash -c "asusctl -k high && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to HIGH'"
 bindcode 210 exec --no-startup-id bash -c "asusctl aura -n && notify-send -u normal -t 2000 'Aura Lighting' 'Switched to next mode'"
 
-
-
-
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
@@ -113,8 +110,9 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id xrandr --output eDP --mode 2560x1440 --scale 0.7x0.7
 exec_always --no-startup-id xrdb .Xresources
-exec_always --no-startup-id $HOME/.config/polybar/autorun.sh
 exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
+exec_always --no-startup-id sh -c "sleep 2 && ~/.config/polybar/launch.sh"
+exec_always --no-startup-id picom
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id libinput-gestures-setup start
