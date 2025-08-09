@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 font pango:DepartureMono Nerd Font Mono
 
 exec --no-startup-id dex --autostart --environment i3
@@ -22,7 +22,9 @@ floating_modifier $mod
 
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id rofi -show drun -dpi 120
+bindsym $mod+d exec --no-startup-id rofi -show drun -dpi 130
+bindsym $mod+slash exec --no-startup-id ~/.config/scripts/wifi-menu.sh
+
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -44,8 +46,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym XF86MonBrightnessDown exec light -U 10 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
-bindsym XF86MonBrightnessUp exec light -A 10 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
+bindsym XF86MonBrightnessDown exec light -U 5 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
+bindsym XF86MonBrightnessUp exec light -A 5 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
+
 bindcode 237 exec --no-startup-id bash -c "asusctl -k med && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to MEDIUM'"
 bindcode 238 exec --no-startup-id bash -c "asusctl -k high && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to HIGH'"
 bindcode 210 exec --no-startup-id bash -c "asusctl aura -n && notify-send -u normal -t 2000 'Aura Lighting' 'Switched to next mode'"
@@ -136,8 +139,8 @@ client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
-bindsym $mod+x exec --no-startup-id firefox
+bindsym $mod+x exec --no-startup-id zen-browser
 
-gaps inner 8
-gaps outer -5
+gaps inner 15
+gaps outer 15
 
