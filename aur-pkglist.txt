@@ -66,7 +66,6 @@ gnome-keyring
 gnome-screenshot
 gparted
 grub
-grub-theme-manjaro
 gst-libav
 gst-plugins-bad
 gst-plugins-base
@@ -114,17 +113,6 @@ maia-console
 make
 man-db
 man-pages
-manjaro-alsa
-manjaro-application-utility
-manjaro-browser-settings
-manjaro-hello
-manjaro-i3-settings
-manjaro-printer
-manjaro-ranger-settings
-manjaro-release
-manjaro-settings-manager-notifier
-manjaro-system
-manjaro-zsh-config
 matcha-gtk-theme
 mdadm
 memtest86+
