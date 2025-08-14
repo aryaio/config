@@ -12,15 +12,23 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id pgrep -x dunst >/dev/null || dunst
 exec --no-startup-id pgrep -x libinput-gestures >/dev/null || libinput-gestures-setup start
 exec --no-startup-id xinput --set-prop 13 "libinput Accel Speed" 0.2
+<<<<<<< HEAD
 exec --no-startup-id pgrep -x polkit-gnome-authentication-agent-1 >/dev/null || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id sudo modprobe asus-nb-wmi
 exec --no-startup-id bash -c 'pgrep -x hiddify >/dev/null || (i3-msg workspace 5; sleep 1; sudo /sbin/hiddify &)'
+=======
+exec_always --no-startup-id sudo modprobe asus-nb-wmi
+>>>>>>> d6fef3ad68096c7f193eb79e3f94bfaea200c560
 
 # Always run after reload
 exec_always --no-startup-id xrandr --output eDP --mode 2560x1440
 exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
 exec_always --no-startup-id sh -c "sleep 2 && ~/.config/polybar/launch.sh"
 exec_always --no-startup-id picom
+<<<<<<< HEAD
+=======
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+>>>>>>> d6fef3ad68096c7f193eb79e3f94bfaea200c560
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/scripts/volume-up.sh
