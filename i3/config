@@ -1,58 +1,76 @@
+# ==========================
+#   i3 CONFIG (CLEANED)
+# ==========================
+
+# Mod key & font
 set $mod Mod4
 font pango:DepartureMono Nerd Font Mono
 
+# Startup applications
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
+exec --no-startup-id dunst
+exec --no-startup-id libinput-gestures-setup start
+exec --no-startup-id bash -c 'i3-msg "workspace 5"; sudo /sbin/hiddify & sleep 1'
+exec --no-startup-id xinput --set-prop 13 "libinput Accel Speed" 0.2
 
-set $refresh_i3status killall -SIGUSR1 i3status
+# Always run (even after reload)
+exec_always --no-startup-id xrandr --output eDP --mode 2560x1440
+exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
+exec_always --no-startup-id sh -c "sleep 2 && ~/.config/polybar/launch.sh"
+exec_always --no-startup-id picom
+exec_always --no-startup-id sudo modprobe asus-nb-wmi
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-#RaiseVol
+# Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/scripts/volume-up.sh
-
-#LowerVol
 bindsym XF86AudioLowerVolume exec --no-startup-id bash -c 'pactl set-sink-volume @DEFAULT_SINK@ -1% && volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP "\\d+%" | head -1) && dunstify -r 91190 -t 1000 -i audio-volume-low "Volume: $volume"'
-
-#MuteVol
 bindsym XF86AudioMute exec --no-startup-id ~/.config/scripts/mute-toggle.sh
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# Brightness
+bindsym XF86MonBrightnessDown exec light -U 5 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
+bindsym XF86MonBrightnessUp exec light -A 5 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
 
+# Keyboard backlight / Aura controls
+bindcode 237 exec --no-startup-id bash -c "asusctl -k med && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to MEDIUM'"
+bindcode 238 exec --no-startup-id bash -c "asusctl -k high && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to HIGH'"
+bindcode 210 exec --no-startup-id bash -c "asusctl aura -n && notify-send -u normal -t 2000 'Aura Lighting' 'Switched to next mode'"
+
+# Floating modifier
 floating_modifier $mod
 
+# Launch apps
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun -dpi 130
 bindsym $mod+slash exec --no-startup-id ~/.config/scripts/wifi-menu.sh
+bindsym $mod+x exec --no-startup-id zen-browser
+bindsym $mod+z exec --no-startup-id code
+bindsym $mod+g exec --no-startup-id nautilus
 
-
+# Navigation (Vim + Arrow keys)
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
-
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# Move windows
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
-
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym XF86MonBrightnessDown exec light -U 5 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
-bindsym XF86MonBrightnessUp exec light -A 5 && notify-send -r 9993 "Brightness" "☀ $(light -G | cut -d'.' -f1)%"
-
-bindcode 237 exec --no-startup-id bash -c "asusctl -k med && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to MEDIUM'"
-bindcode 238 exec --no-startup-id bash -c "asusctl -k high && notify-send -u normal -t 2000 'Keyboard Backlight' 'Set to HIGH'"
-bindcode 210 exec --no-startup-id bash -c "asusctl aura -n && notify-send -u normal -t 2000 'Aura Lighting' 'Switched to next mode'"
-
+# Layout controls
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
@@ -63,6 +81,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
+# Workspaces
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -96,51 +115,42 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# Restart/Reload/Exit
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -f 'pango:DepartureMono Nerd Font Mono 17' -m 'You are about to exit i3' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Resize mode
 mode "resize" {
     bindsym j resize shrink width 10 px or 10 ppt
     bindsym k resize grow height 10 px or 10 ppt
     bindsym l resize shrink height 10 px or 10 ppt
     bindsym semicolon resize grow width 10 px or 10 ppt
-
     bindsym Left resize shrink width 10 px or 10 ppt
     bindsym Down resize grow height 10 px or 10 ppt
     bindsym Up resize shrink height 10 px or 10 ppt
     bindsym Right resize grow width 10 px or 10 ppt
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id xrandr --output eDP --mode 2560x1440
-exec_always --no-startup-id xrdb .Xresources
-exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
-exec_always --no-startup-id sh -c "sleep 2 && ~/.config/polybar/launch.sh"
-exec_always --no-startup-id picom
-exec --no-startup-id dunst
-exec --no-startup-id nm-applet
-exec --no-startup-id libinput-gestures-setup start
+# Window rules
+for_window [class="Hiddify"] floating enable, resize set 800 600, move position center, move to workspace number 5
+for_window [class="AyuGramDesktop"] floating enable, resize set 800 930, move position center
 
+# Borders & Colors
 default_border pixel
-
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
-
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
-client.background       $bg
-
-bindsym $mod+x exec --no-startup-id zen-browser
-
 gaps inner 15
 gaps outer 15
 
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #2e3440
+
+client.focused          #88c0d0 $bg     $fg  #88c0d0 $bg
+client.focused_inactive $bg     $bg     $fg  $bg     $bg
+client.unfocused        $bg     $bg     $fg  $bg     $bg
+client.urgent           #bf616a $bg     $fg  #bf616a $bg
+client.placeholder      $bg     $bg     $fg  $bg     $bg
+client.background       $bg
