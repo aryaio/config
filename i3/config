@@ -14,13 +14,13 @@ exec --no-startup-id dunst
 exec --no-startup-id libinput-gestures-setup start
 exec --no-startup-id bash -c 'i3-msg "workspace 5"; sudo /sbin/hiddify & sleep 1'
 exec --no-startup-id xinput --set-prop 13 "libinput Accel Speed" 0.2
+exec_always --no-startup-id sudo modprobe asus-nb-wmi
 
 # Always run (even after reload)
 exec_always --no-startup-id xrandr --output eDP --mode 2560x1440
 exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
 exec_always --no-startup-id sh -c "sleep 2 && ~/.config/polybar/launch.sh"
 exec_always --no-startup-id picom
-exec_always --no-startup-id sudo modprobe asus-nb-wmi
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Volume
