@@ -16,11 +16,13 @@ exec --no-startup-id pgrep -x polkit-gnome-authentication-agent-1 >/dev/null || 
 exec --no-startup-id sudo modprobe asus-nb-wmi
 exec --no-startup-id bash -c 'pgrep -x hiddify >/dev/null || (i3-msg workspace 5; sleep 1; sudo /sbin/hiddify &)'
 
+
 # Always run after reload
 exec_always --no-startup-id xrandr --output eDP --mode 2560x1440
 exec_always --no-startup-id wal -i /home/arya/i3wm-config/IMG_2103.png
 exec_always --no-startup-id sh -c "sleep 2 && ~/.config/polybar/launch.sh"
 exec_always --no-startup-id picom
+exec_always --no-startup-id setxkbmap -layout us,ir -option 'grp:alt_shift_toggle'
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/scripts/volume-up.sh
